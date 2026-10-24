@@ -8,7 +8,6 @@
     { "map": "Construct",    "game": "Game Modes/swords.json", "weight": 8 },
     { "map": "Citadel",      "game": "Game Modes/swords.json", "weight": 8 },
     { "map": "Epitaph",      "game": "Game Modes/swords.json", "weight": 6 },
-    { "map": "Cold Storage", "game": "Game Modes/swords.json", "weight": 6 },
-    { "map": "Narrows",      "game": "Game Modes/swords.json", "weight": 4 }
+    { "map": "Cold Storage", "game": "Game Modes/swords.json", "weight": 6 }
   ]
 }

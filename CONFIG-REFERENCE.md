@@ -64,7 +64,7 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 |---|---|---|---|
 | `name` | text | "Swords" | Shown in the lobby |
 | `vote_seconds` | 5-120 | 20 | Voting countdown |
-| `games` | 3-128 entries, no duplicates | 7 | The rotation |
+| `games` | 3-128 entries, no duplicates | 6 | The rotation |
 
 Each game entry:
 

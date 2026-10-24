@@ -1,7 +1,7 @@
 # Halo 3 Swords server (Project Reclaimer)
 
 **Branch `swords-only`.** One server, `Good times FFA - H3 originals`, 2-8 players, free-for-all
-**Swords only**, voted rotation of 7 small maps. The mixed-mode rotation is on the `main` branch.
+**Swords only**, voted rotation of 6 small maps. The mixed-mode rotation is on the `main` branch.
 
 ## Quick start (Windows PC with MCC + Project Reclaimer installed)
 
@@ -24,7 +24,7 @@ After a `git pull`, re-run `setup-windows.ps1` to copy the new config into `C:\r
 | `game-modes/swords.json` | Custom Swords mode |
 | `docker/` | Experimental Docker setup (Mac/Linux) |
 | `dedicated.toml` | Server config (8 players max, voting waits for 2) |
-| `playlists/swords-small.playlist.json` | **Active**: Swords on 7 small maps, with weights |
+| `playlists/swords-small.playlist.json` | **Active**: Swords on 6 small maps, with weights |
 | `playlists/lone-wolves.playlist.json` | Mixed-mode rotation from `main` (not used on this branch) |
 | `CONFIG-REFERENCE.md` | Every setting, its possible values and what changing it does |
 | `setup-windows.ps1` | Builds the server folder, copies the config, opens the firewall, runs `dedicated check` |
@@ -39,20 +39,19 @@ Players = Bungie's recommended count.
 
 Each vote offers 3 maps drawn by weight, plus "None of the above". **On ballot** = chance the map
 is one of the 3. **Played** = chance it's played if votes are random (with no votes, the first
-offered map starts, which gives the same odds). Total weight 52.
+offered map starts, which gives the same odds). Total weight 48.
 
 | Map | Weight | On ballot | Played | Players | Why this weight |
 |---|---|---|---|---|---|
-| Guardian | 10 | 54% | 18% | 2-6 | Tight, vertical, lifts: classic sword fights |
-| Heretic | 10 | 54% | 18% | 2-8 | Small symmetric arena, built around a sword spawn |
-| Construct | 8 | 46% | 15% | 2-8 | Small, lifts and corridors |
-| Citadel | 8 | 46% | 15% | 2-6 | Small, close quarters |
-| Epitaph | 6 | 37% | 12% | 2-6 | Small but some open lanes |
-| Cold Storage | 6 | 37% | 12% | 2-6 | Small, a bit flat |
-| Narrows | 4 | 26% | 9% | 2-8 | Long bridge; slower for swords |
+| Guardian | 10 | 59% | 20% | 2-6 | Tight, vertical, lifts: classic sword fights |
+| Heretic | 10 | 59% | 20% | 2-8 | Small symmetric arena, built around a sword spawn |
+| Construct | 8 | 51% | 17% | 2-8 | Small, lifts and corridors |
+| Citadel | 8 | 51% | 17% | 2-6 | Small, close quarters |
+| Epitaph | 6 | 40% | 13% | 2-6 | Small but some open lanes |
+| Cold Storage | 6 | 40% | 13% | 2-6 | Small, a bit flat |
 
-Left out: Isolation (vehicles, big), and every map Bungie rates for 4+ players (The Pit, Foundry,
-Ghost Town, Orbital) or bigger.
+Left out: Narrows (long bridge, slow for swords), Isolation (vehicles, big), and every map Bungie
+rates for 4+ players (The Pit, Foundry, Ghost Town, Orbital) or bigger.
 
 ### Custom modes
 
