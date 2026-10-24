@@ -29,7 +29,7 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 |---|---|---|---|---|
 | `name` | text, ≤48 chars, unique | required | "Good times FFA - H3 originals" | Server browser name |
 | `port` | 1024-65535 UDP, unique | required | 49176 | Must match firewall/router forward |
-| `playlist` | playlist file | — | lone-wolves | Voted rotation (pick **one** of playlist / map+game / variant / campaign / odst) |
+| `playlist` | playlist file | — | swords-small | Voted rotation (pick **one** of playlist / map+game / variant / campaign / odst) |
 | `map` + `game` | names | Guardian + Slayer | — | Same map and mode every game, no voting |
 | `variant` | saved game `.json` | — | — | One saved custom game forever |
 | `campaign` / `odst` | mission settings | — | — | Co-op campaign / ODST Firefight instead of multiplayer |
@@ -62,9 +62,9 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 
 | Field | Values | Ours | Changing it |
 |---|---|---|---|
-| `name` | text | "Lone Wolves" | Shown in the lobby |
+| `name` | text | "Swords" | Shown in the lobby |
 | `vote_seconds` | 5-120 | 20 | Voting countdown |
-| `games` | 3-128 entries, no duplicates | 15 | The rotation |
+| `games` | 3-128 entries, no duplicates | 7 | The rotation |
 
 Each game entry:
 

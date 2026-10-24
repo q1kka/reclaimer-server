@@ -1,14 +1,14 @@
-# Classic Halo 3 FFA server (Project Reclaimer)
+# Halo 3 Swords server (Project Reclaimer)
 
-One server, `Good times FFA - H3 originals`, 2-8 players, vote-based rotation of
-Slayer / Oddball / King of the Hill / Juggernaut / Swords on the classic small and medium maps.
+**Branch `swords-only`.** One server, `Good times FFA - H3 originals`, 2-8 players, free-for-all
+**Swords only**, voted rotation of 7 small maps. The mixed-mode rotation is on the `main` branch.
 
 ## Quick start (Windows PC with MCC + Project Reclaimer installed)
 
 Admin PowerShell:
 
 ```powershell
-git clone https://github.com/q1kka/reclaimer-server.git C:\reclaimer-config
+git clone -b swords-only https://github.com/q1kka/reclaimer-server.git C:\reclaimer-config
 cd C:\reclaimer-config
 powershell -ExecutionPolicy Bypass -File .\setup-windows.ps1 -ExePath "C:\path\to\your\project-reclaimer.exe"
 cd C:\reclaimer
@@ -24,7 +24,8 @@ After a `git pull`, re-run `setup-windows.ps1` to copy the new config into `C:\r
 | `game-modes/swords.json` | Custom Swords mode |
 | `docker/` | Experimental Docker setup (Mac/Linux) |
 | `dedicated.toml` | Server config (8 players max, voting waits for 2) |
-| `playlists/lone-wolves.playlist.json` | Map + game type rotation with weights |
+| `playlists/swords-small.playlist.json` | **Active**: Swords on 7 small maps, with weights |
+| `playlists/lone-wolves.playlist.json` | Mixed-mode rotation from `main` (not used on this branch) |
 | `CONFIG-REFERENCE.md` | Every setting, its possible values and what changing it does |
 | `setup-windows.ps1` | Builds the server folder, copies the config, opens the firewall, runs `dedicated check` |
 
@@ -32,21 +33,26 @@ Docs: https://projectreclaimer.dev/host.html
 
 ## Rotation
 
-All maps are the stock layouts (no Forge variants). Game types are the built-in Halo 3 FFA modes.
-Players = Bungie's recommended count. Weapon/power-up data from Halopedia; "—" = not documented there.
+Every game is Swords (`game-modes/swords.json`): Energy Sword only, no map weapons, vehicles or
+grenades, so the map's normal power weapons and equipment don't spawn. Stock map layouts.
+Players = Bungie's recommended count.
 
-| Map | Modes (weight) | Players | Power weapons | Power-ups & equipment |
-|---|---|---|---|---|
-| Guardian | Slayer (10), Oddball (4), Swords (3) | 2-6 | Sniper, Gravity Hammer, Brute Shot, Mauler | Overshield, Active Camo, Bubble Shield, Power Drain |
-| Construct | Slayer (8), KotH (3), Swords (3) | 2-8 | Spartan Laser, Sniper, Sword, Brute Shot, Flamethrower, Missile Pod, Mauler | Bubble Shield, Power Drain |
-| Epitaph | Slayer (8), KotH (4) | 2-6 | Gravity Hammer, Rockets, Sniper, Brute Shot, Shotgun | Overshield, Active Camo, Bubble Shield, Power Drain |
-| Narrows | Slayer (6) | 2-8 | Rockets, 2× Sniper, Brute Shot, Mauler | Overshield, Bubble Shield, Power Drain |
-| Isolation | Slayer (6), Juggernaut (2) | 2-10 | Rockets, Sniper, Shotgun, 2× Brute Shot, Mauler | Regenerator; Ghost, Mongoose |
-| Heretic | Slayer (6), Swords (3) | 2-8 | Sword (centre) | — |
-| Citadel | Slayer (5) | 2-6 | Rockets, Sniper | Power Drain |
-| Cold Storage | Slayer (4) | 2-6 | Rockets, Sniper | — |
+Each vote offers 3 maps drawn by weight, plus "None of the above". **On ballot** = chance the map
+is one of the 3. **Played** = chance it's played if votes are random (with no votes, the first
+offered map starts, which gives the same odds). Total weight 52.
 
-Maps Bungie rates for 4+ players (The Pit, Foundry, Ghost Town, Orbital) are left out so 1v1s work.
+| Map | Weight | On ballot | Played | Players | Why this weight |
+|---|---|---|---|---|---|
+| Guardian | 10 | 54% | 18% | 2-6 | Tight, vertical, lifts: classic sword fights |
+| Heretic | 10 | 54% | 18% | 2-8 | Small symmetric arena, built around a sword spawn |
+| Construct | 8 | 46% | 15% | 2-8 | Small, lifts and corridors |
+| Citadel | 8 | 46% | 15% | 2-6 | Small, close quarters |
+| Epitaph | 6 | 37% | 12% | 2-6 | Small but some open lanes |
+| Cold Storage | 6 | 37% | 12% | 2-6 | Small, a bit flat |
+| Narrows | 4 | 26% | 9% | 2-8 | Long bridge; slower for swords |
+
+Left out: Isolation (vehicles, big), and every map Bungie rates for 4+ players (The Pit, Foundry,
+Ghost Town, Orbital) or bigger.
 
 ### Custom modes
 
@@ -56,7 +62,6 @@ Maps Bungie rates for 4+ players (The Pit, Foundry, Ghost Town, Orbital) are lef
   sword battery, 25 kills, 10 min. Option values copied from the bundled Gun Game mode.
 
 If `dedicated content` already lists a built-in "Swords", use that name instead.
-Overshield and Active Camo respawn every 3 minutes in the MCC Halo 3 settings.
 
 ## Before anything
 

@@ -1,4 +1,4 @@
-# Project Reclaimer dedicated server: classic Halo 3 FFA ("Lone Wolves"), 2-8 players.
+# Project Reclaimer dedicated server: Halo 3 Swords only, FFA on small maps, 2-8 players.
 # Key reference: https://projectreclaimer.dev/host.html
 # Validate with:  .\project-reclaimer.exe dedicated check
 
@@ -43,10 +43,10 @@ block_vpn = true
 max_ping = 0               # 0 = no limit
 load_timeout = 30
 share_mods = false
-welcome = "Classic Halo 3 Lone Wolves. FFA, 2-8 players. Vote for the next game."
+welcome = "Swords only. FFA on small Halo 3 maps, 2-8 players. Vote for the next map."
 password = ""              # set one to keep it private
 
 [[server]]
 name = "Good times FFA - H3 originals"
 port = 49176               # UDP
-playlist = "playlists/lone-wolves.playlist.json"
+playlist = "playlists/swords-small.playlist.json"

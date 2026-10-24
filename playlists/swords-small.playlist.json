@@ -1,0 +1,14 @@
+{
+  "name": "Swords",
+  "version": 2,
+  "vote_seconds": 20,
+  "games": [
+    { "map": "Guardian",     "game": "Game Modes/swords.json", "weight": 10 },
+    { "map": "Heretic",      "game": "Game Modes/swords.json", "weight": 10 },
+    { "map": "Construct",    "game": "Game Modes/swords.json", "weight": 8 },
+    { "map": "Citadel",      "game": "Game Modes/swords.json", "weight": 8 },
+    { "map": "Epitaph",      "game": "Game Modes/swords.json", "weight": 6 },
+    { "map": "Cold Storage", "game": "Game Modes/swords.json", "weight": 6 },
+    { "map": "Narrows",      "game": "Game Modes/swords.json", "weight": 4 }
+  ]
+}
