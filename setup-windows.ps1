@@ -23,6 +23,18 @@ Copy-Item $ExePath (Join-Path $ServerDir "project-reclaimer.exe") -Force
 $toml = Join-Path $ServerDir "dedicated.toml"
 if (Test-Path $toml) { Copy-Item $toml "$toml.generated.bak" -Force }
 Copy-Item (Join-Path $here "dedicated.toml") $toml -Force
+
+# RCON for name-guard.ps1, on this PC only. The password is made once and kept in the
+# server folder, never in the repo.
+$rconFile = Join-Path $ServerDir "rcon-password.txt"
+if (-not (Test-Path $rconFile)) {
+    $alphabet = [char[]]"abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+    $bytes = New-Object byte[] 32
+    [Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
+    Set-Content $rconFile (-join ($bytes | ForEach-Object { $alphabet[$_ % $alphabet.Length] })) -NoNewline
+}
+$rconPassword = (Get-Content $rconFile -Raw).Trim()
+Add-Content $toml "`n[rcon]`npassword = `"$rconPassword`"`naddress = `"127.0.0.1`""
 New-Item -ItemType Directory -Force (Join-Path $ServerDir "playlists") | Out-Null
 Copy-Item (Join-Path $here "playlists\*.json") (Join-Path $ServerDir "playlists") -Force
 $modes = Join-Path $ServerDir "content\Game Modes"
@@ -47,4 +59,5 @@ try {
 
 Write-Host ""
 Write-Host "Start the server:  cd $ServerDir; .\project-reclaimer.exe dedicated"
+Write-Host "Auto-kick offensive names, in a second window:  cd $here; .\name-guard.ps1 -ServerDir $ServerDir"
 Write-Host "Then launch your normal client and join from the Server Browser."

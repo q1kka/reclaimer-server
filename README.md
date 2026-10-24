@@ -17,11 +17,16 @@ cd C:\reclaimer
 
 Then start the game normally and join **Good times FFA - sword saturday** from the Server Browser.
 To test alone, set `min_players = 1` in `C:\reclaimer\dedicated.toml`.
+
+Auto-kick offensive names: in a **second** PowerShell window, `cd C:\reclaimer-config; .\name-guard.ps1`
+(see [Auto-kick offensive names](#auto-kick-offensive-names)).
 After a `git pull`, re-run `setup-windows.ps1` to copy the new config into `C:\reclaimer`.
 
 | File | What it is |
 |---|---|
 | `game-modes/swords.json` | Custom Swords mode |
+| `name-guard.ps1` | Kicks players with offensive names, through RCON |
+| `name-filter.txt` | The words `name-guard.ps1` kicks for; edit freely |
 | `docker/` | Experimental Docker setup (Mac/Linux) |
 | `dedicated.toml` | Server config (8 players max, voting waits for 2) |
 | `playlists/swords-small.playlist.json` | **Active**: Swords on 6 small maps, with weights |
@@ -61,6 +66,27 @@ rates for 4+ players (The Pit, Foundry, Ghost Town, Orbital) or bigger.
   sword battery, 25 kills, 10 min. Option values copied from the bundled Gun Game mode.
 
 If `dedicated content` already lists a built-in "Swords", use that name instead.
+
+## Auto-kick offensive names
+
+Project Reclaimer has no server-side name filter (the in-game filter only masks names for the
+player who turned it on), so `name-guard.ps1` does it through the remote console:
+
+- Every 5 s it reads the player list and kicks anyone whose name matches `name-filter.txt`,
+  with the reason "Offensive name. Change your name and rejoin." Admins are never kicked.
+- A kick blocks them for 10 min (then 30/60/120 min for repeats that day); after renaming they can
+  come back once it runs out.
+- Matching sees through leetspeak (`n1gg3r`), spacing/symbols (`N i G g E r`), stretched letters,
+  accents and Cyrillic lookalikes. Entries starting with `=` only match whole words, so `=spic`
+  kicks "sp1c" but not "Spicy Taco", `=coon` not "Raccoon King".
+- Edit `name-filter.txt` any time; it reloads by itself. Try names without kicking anyone:
+  `.\name-guard.ps1 -Test "Some Name", "Other Name"`.
+- Kicks are logged to `C:\reclaimer\name-guard.log`.
+
+It needs RCON, which `setup-windows.ps1` turns on: it adds a random password to
+`C:\reclaimer\dedicated.toml` (kept in `C:\reclaimer\rcon-password.txt`, never in this repo) and
+RCON only listens on this PC (127.0.0.1). Restart the server after the first setup so RCON starts.
+Windows only; the Docker setup doesn't run it.
 
 ## Before anything
 

@@ -1,0 +1,54 @@
+# Names containing any of these get kicked by name-guard.ps1. One entry per line, edits apply live.
+#
+#   word     matches anywhere in the name, also with leetspeak (n1gg3r), lookalikes,
+#            spaces/symbols between letters (n_i g-g.e r) and stretched letters (niiigger)
+#   =word    matches only as a whole word: use it for short words that hide inside
+#            harmless ones (spic -> spicy, coon -> raccoon)
+#
+# Check a name without kicking anyone:  .\name-guard.ps1 -Test "Some Name"
+
+# Racial and ethnic slurs
+nigger
+nigga
+niglet
+sandnigger
+wetback
+beaner
+raghead
+towelhead
+chingchong
+=chink
+=chinks
+=spic
+=spics
+=kike
+=kikes
+=gook
+=gooks
+=coon
+=coons
+=paki
+=pakis
+=jigaboo
+=porchmonkey
+
+# Homophobic and transphobic slurs
+faggot
+=fag
+=fags
+tranny
+trannie
+=dyke
+
+# Hate symbols and slogans
+heilhitler
+siegheil
+whitepower
+1488
+=kkk
+
+# Other
+=retard
+=retards
+=retarded
+=kys

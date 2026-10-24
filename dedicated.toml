@@ -23,10 +23,9 @@ auto_reload = true     # edits to this file / the playlist apply without kicking
 # Find it in the game: Settings -> Online services -> Player ID.
 admins = []
 
-# Uncomment to turn on the remote console (TCP, same number as the game port).
-# [rcon]
-# password = "change-me"
-# address = "127.0.0.1"
+# Remote console (TCP, same number as the game port), used by name-guard.ps1.
+# setup-windows.ps1 adds an [rcon] section with a random password to the server's copy of
+# this file. Don't put a password here: this repo is public.
 
 [defaults]
 max_players = 8
