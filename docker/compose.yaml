@@ -1,0 +1,38 @@
+# Project Reclaimer dedicated server in Docker on this Mac.
+# Based on the official compose.yaml (https://projectreclaimer.dev/host.html#docker), changed to:
+#   - one container on published ports (Docker Desktop on Mac has no default host networking)
+#   - amd64 image, emulated on Apple Silicon
+#   - config, playlist and modes taken from the folder above, so there's one copy of each
+#
+#   docker compose up -d && docker compose logs -f
+#   docker compose exec reclaimer dedicated status
+name: reclaimer
+services:
+  reclaimer:
+    image: ${IMAGE:-ghcr.io/projectreclaimer/project-reclaimer-dedicated:latest}
+    platform: linux/amd64
+    restart: unless-stopped
+    stop_signal: SIGINT
+    stop_grace_period: 30s
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "49175:49175/tcp"   # discovery master
+      - "49176:49176/udp"   # game
+    volumes:
+      - ./server:/server
+      - ./server/game:/server/game:ro
+      - ../dedicated.toml:/server/dedicated.toml
+      - ../playlists:/server/playlists
+      - "../game-modes:/server/content/Game Modes"
+      - cache:/cache
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+volumes:
+  cache:

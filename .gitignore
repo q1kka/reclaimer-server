@@ -1,0 +1,3 @@
+# Game files, server data and logs: never commit (Halo 3 files are copyrighted, and large)
+docker/server/
+docker/.env

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "name": "Swords",
+  "mode": "Slayer",
+  "rules": {
+    "score_to_win": 25,
+    "kill_points": 1,
+    "death_points": 0,
+    "suicide_points": -1,
+    "betrayal_points": 0
+  },
+  "options": {
+    "rounds.teams": 0,
+    "rounds.limit": 1,
+    "rounds.minutes": 10,
+    "map.weapons": 11,
+    "map.vehicles": 1,
+    "player.grenades": 2,
+    "player.ammo": 2
+  },
+  "script": {
+    "version": 1,
+    "name": "Swords",
+    "initial": [],
+    "on_spawn": [
+      {"op": "weapon", "index": [0], "choices": ["energy_sword"]}
+    ]
+  }
+}

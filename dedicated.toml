@@ -1,0 +1,52 @@
+# Project Reclaimer dedicated server: classic Halo 3 FFA ("Lone Wolves"), 2-8 players.
+# Key reference: https://projectreclaimer.dev/host.html
+# Validate with:  .\project-reclaimer.exe dedicated check
+
+game = "game"          # Halo 3 files copied by `dedicated init --from`
+content = "content"    # maps, game types, mods
+data = "data"
+bans = "bans.json"
+
+host_name = "Good times FFA - H3 originals"
+
+# Leave empty to auto-detect. Use your LAN IP (e.g. "192.168.1.50") to list
+# the server only on your home network while testing.
+public_address = ""
+
+# true = ask your router to open the ports itself. Otherwise forward them by hand.
+upnp = false
+
+auto_update = false    # updates restart the server mid-game
+auto_reload = true     # edits to this file / the playlist apply without kicking players
+
+# Your player ID(s), so you get admin powers on your own server: /kick, /ban, and you can't be vote-kicked.
+# Find it in the game: Settings -> Online services -> Player ID.
+admins = []
+
+# Uncomment to turn on the remote console (TCP, same number as the game port).
+# [rcon]
+# password = "change-me"
+# address = "127.0.0.1"
+
+[defaults]
+max_players = 8
+min_players = 2            # voting waits until 2 players are in. Set 1 to test alone.
+camera = "first_person"
+voice = true
+voice_proximity = true
+text_chat = true
+votes = true               # vote kick (Tab -> Vote Kick, or /vote kick <name>), plus vote end round/game.
+                           # Passes with >50% yes in 30 s. Kicked = out 10 min, then 30/60/120 min for repeat kicks that day.
+                           # There's no vote ban: bans are for admins (add your player ID to `admins`, then /ban <name>).
+anti_cheat = "enforce"
+block_vpn = true
+max_ping = 0               # 0 = no limit
+load_timeout = 30
+share_mods = false
+welcome = "Classic Halo 3 Lone Wolves. FFA, 2-8 players. Vote for the next game."
+password = ""              # set one to keep it private
+
+[[server]]
+name = "Good times FFA - H3 originals"
+port = 49176               # UDP
+playlist = "playlists/lone-wolves.playlist.json"

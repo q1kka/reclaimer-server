@@ -1,0 +1,22 @@
+{
+  "name": "Lone Wolves",
+  "version": 2,
+  "vote_seconds": 20,
+  "games": [
+    { "map": "Guardian",     "game": "Slayer",           "weight": 10 },
+    { "map": "Construct",    "game": "Slayer",           "weight": 8 },
+    { "map": "Epitaph",      "game": "Slayer",           "weight": 8 },
+    { "map": "Narrows",      "game": "Slayer",           "weight": 6 },
+    { "map": "Isolation",    "game": "Slayer",           "weight": 6 },
+    { "map": "Heretic",      "game": "Slayer",           "weight": 6 },
+    { "map": "Citadel",      "game": "Slayer",           "weight": 5 },
+    { "map": "Cold Storage", "game": "Slayer",           "weight": 4 },
+    { "map": "Guardian",     "game": "Oddball",          "weight": 4 },
+    { "map": "Epitaph",      "game": "King of the Hill", "weight": 4 },
+    { "map": "Construct",    "game": "King of the Hill", "weight": 3 },
+    { "map": "Isolation",    "game": "Juggernaut",       "weight": 2 },
+    { "map": "Guardian",     "game": "Game Modes/swords.json", "weight": 3 },
+    { "map": "Construct",    "game": "Game Modes/swords.json", "weight": 3 },
+    { "map": "Heretic",      "game": "Game Modes/swords.json", "weight": 3 }
+  ]
+}
