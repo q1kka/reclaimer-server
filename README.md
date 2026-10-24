@@ -101,7 +101,7 @@ server reads our config; real-game performance is untested.
 2. Docker Desktop → Settings → General → turn on **Use Rosetta for x86_64/amd64 emulation on
    Apple Silicon**, Apply & restart. Much faster than the default QEMU emulation.
 3. `cd docker && docker compose up -d && docker compose logs -f`
-4. `docker/.env` sets the address to this Mac's LAN IP (192.168.3.5). Update it if the IP changes.
+4. Copy `docker/.env.example` to `docker/.env` and set your machine's LAN IP (`ipconfig getifaddr en0` on a Mac).
 5. On the Windows PC: Server Browser → join. Client version must match the image (latest = v0.9.23).
 
 Config, playlist and Swords mode are mounted from this folder, so edits here apply live.
