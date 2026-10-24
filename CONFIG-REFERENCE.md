@@ -32,7 +32,7 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 | `playlist` | playlist file | — | — | Voted rotation (pick **one** of playlist / map+game / variant / campaign / odst) |
 | `map` + `game` | names | Guardian + Slayer | — | Same map and mode every game, no voting |
 | `variant` | saved game `.json` | — | — | One saved custom game forever |
-| `campaign` / `odst` | mission settings | — | Tsavo Highway, Legendary, skulls 6144 | Co-op campaign / ODST Firefight instead of multiplayer |
+| `campaign` / `odst` | mission settings | — | Tsavo Highway, Legendary, skulls 6148 | Co-op campaign / ODST Firefight instead of multiplayer |
 | `max_players` | 1-127 (campaign/ODST ≤16) | 16 | 16 | Lobby cap |
 | `min_players` | 1-max_players | 1 | 1 | Vote/game doesn't start until this many joined |
 | `voice` | true / false | true | true | All voice chat on/off |

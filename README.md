@@ -1,7 +1,7 @@
 # Halo 3 Tsavo Highway co-op server (Project Reclaimer)
 
 **Branch `tsavo-legendary`.** One campaign co-op server, `Good times saturday - Tsavo Highway`:
-Tsavo Highway on **Legendary** with the **Grunt Birthday Party** and **Cowbell** skulls, up to
+Tsavo Highway on **Legendary** with the **Grunt Birthday Party**, **Cowbell** and **Tough Luck** skulls, up to
 16 players, everyone as their own Spartan/Elite. The Swords server is on `swords-only`, the
 mixed FFA rotation on `main`.
 
@@ -47,7 +47,7 @@ Docs: https://projectreclaimer.dev/host.html#campaign
 In `dedicated.toml`:
 
 ```toml
-campaign = { mission = 3030, insertion = 0, difficulty = "legendary", custom_characters = true, modifiers = { skulls = 6144 } }
+campaign = { mission = 3030, insertion = 0, difficulty = "legendary", custom_characters = true, modifiers = { skulls = 6148 } }
 ```
 
 | Setting | Ours | Options |
@@ -56,7 +56,7 @@ campaign = { mission = 3030, insertion = 0, difficulty = "legendary", custom_cha
 | `insertion` | 0 (mission start) | 1, 2, ... = later rally points, in the order the Campaign page lists them |
 | `difficulty` | "legendary" | "easy", "normal", "heroic" |
 | `custom_characters` | true | false = everyone plays as the Master Chief and the Arbiter |
-| `modifiers.skulls` | 6144 | Sum of the skulls you want (table below) |
+| `modifiers.skulls` | 6148 | Sum of the skulls you want (table below) |
 
 Other modifiers: `sprint = true` (with `sprint_speed_percent` 110-200, `sprint_stamina_seconds`
 0-30), enemy `health_percent` / `damage_percent` 25-1000.
@@ -65,7 +65,7 @@ Other modifiers: `sprint = true` (with `sprint_speed_percent` 110-200, `sprint_s
 |---|---|---|---|---|
 | Iron | 1 | | Assassin | 512 |
 | Black Eye | 2 | | Blind | 1024 |
-| Tough Luck | 4 | | **Cowbell** | **2048** |
+| **Tough Luck** | **4** | | **Cowbell** | **2048** |
 | Catch | 8 | | **Grunt Birthday Party** | **4096** |
 | Fog | 16 | | IWHBYD | 8192 |
 | Famine | 32 | | | |

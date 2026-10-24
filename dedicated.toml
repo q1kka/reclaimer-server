@@ -1,5 +1,5 @@
 # Project Reclaimer dedicated server: Halo 3 campaign co-op, Tsavo Highway on Legendary
-# with Grunt Birthday Party + Cowbell, up to 16 players.
+# with Grunt Birthday Party + Cowbell + Tough Luck, up to 16 players.
 # Key reference: https://projectreclaimer.dev/host.html
 # Validate with:  .\project-reclaimer.exe dedicated check
 
@@ -43,7 +43,7 @@ block_vpn = true
 max_ping = 0               # 0 = no limit
 load_timeout = 30
 share_mods = false
-welcome = "Tsavo Highway on Legendary. Skulls: Grunt Birthday Party + Cowbell. Up to 16 players."
+welcome = "Tsavo Highway on Legendary. Skulls: Grunt Birthday Party, Cowbell, Tough Luck. Up to 16 players."
 password = ""              # set one to keep it private
 
 [[server]]
@@ -54,8 +54,8 @@ port = 49176               # UDP
 #   through the campaign, then starts over from Tsavo.
 # insertion 0 = the mission's start; 1+ = its later rally points.
 # custom_characters = everyone plays their own Spartan/Elite instead of Chief and the Arbiter.
-# skulls = sum of the ones on: Grunt Birthday Party 4096 + Cowbell 2048 = 6144.
+# skulls = sum of the ones on: Grunt Birthday Party 4096 + Cowbell 2048 + Tough Luck 4 = 6148.
 #   Iron 1, Black Eye 2, Tough Luck 4, Catch 8, Fog 16, Famine 32, Thunderstorm 64, Tilt 128,
 #   Mythic 256, Assassin 512, Blind 1024, Cowbell 2048, Grunt Birthday Party 4096, IWHBYD 8192.
 #   Don't add Iron with many players: anyone dying sends everyone back to the checkpoint.
-campaign = { mission = 3030, insertion = 0, difficulty = "legendary", custom_characters = true, modifiers = { skulls = 6144 } }
+campaign = { mission = 3030, insertion = 0, difficulty = "legendary", custom_characters = true, modifiers = { skulls = 6148 } }
