@@ -16,7 +16,7 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 | `upnp` | true / false | false | false | true = router opens the ports itself. Keep false on AWS |
 | `auto_update` | true / false | false | false | true = installs new releases and restarts (kills running games) |
 | `auto_reload` | true / false | true | true | false = edits only apply after `dedicated reload` |
-| `host_name` | text | "Dedicated server" | "Good times FFA - sword saturday" | Shown under the server name in the browser and lobby |
+| `host_name` | text | "Dedicated server" | "Good times saturday - Tsavo Highway" | Shown under the server name in the browser and lobby |
 | `admins` | list of player IDs | [] | [] | Those players can kick/ban on every server |
 | `stats_server` | empty / `"off"` / address | public service | public | `"off"` = games don't count toward players' ranks |
 
@@ -27,14 +27,14 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 
 | Setting | Values | Default | Ours | Changing it |
 |---|---|---|---|---|
-| `name` | text, ≤48 chars, unique | required | "Good times FFA - sword saturday" | Server browser name |
+| `name` | text, ≤48 chars, unique | required | "Good times saturday - Tsavo Highway" | Server browser name |
 | `port` | 1024-65535 UDP, unique | required | 49176 | Must match firewall/router forward |
-| `playlist` | playlist file | — | swords-small | Voted rotation (pick **one** of playlist / map+game / variant / campaign / odst) |
+| `playlist` | playlist file | — | — | Voted rotation (pick **one** of playlist / map+game / variant / campaign / odst) |
 | `map` + `game` | names | Guardian + Slayer | — | Same map and mode every game, no voting |
 | `variant` | saved game `.json` | — | — | One saved custom game forever |
-| `campaign` / `odst` | mission settings | — | — | Co-op campaign / ODST Firefight instead of multiplayer |
-| `max_players` | 1-127 (campaign/ODST ≤16) | 16 | 8 | Lobby cap |
-| `min_players` | 1-max_players | 1 | 2 | Vote/game doesn't start until this many joined |
+| `campaign` / `odst` | mission settings | — | Tsavo Highway, Legendary, skulls 6144 | Co-op campaign / ODST Firefight instead of multiplayer |
+| `max_players` | 1-127 (campaign/ODST ≤16) | 16 | 16 | Lobby cap |
+| `min_players` | 1-max_players | 1 | 1 | Vote/game doesn't start until this many joined |
 | `voice` | true / false | true | true | All voice chat on/off |
 | `voice_global` / `voice_team` / `voice_proximity` | true / false | true | true | Turn off V (everyone), B (team), N (nearby) keys separately |
 | `text_chat` | true / false | true | true | Text chat on/off |

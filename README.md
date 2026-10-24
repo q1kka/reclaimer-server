@@ -1,71 +1,82 @@
-# Halo 3 Swords server (Project Reclaimer)
+# Halo 3 Tsavo Highway co-op server (Project Reclaimer)
 
-**Branch `swords-only`.** One server, `Good times FFA - sword saturday`, 2-8 players, free-for-all
-**Swords only**, voted rotation of 6 small maps. The mixed-mode rotation is on the `main` branch.
+**Branch `tsavo-legendary`.** One campaign co-op server, `Good times saturday - Tsavo Highway`:
+Tsavo Highway on **Legendary** with the **Grunt Birthday Party** and **Cowbell** skulls, up to
+16 players, everyone as their own Spartan/Elite. The Swords server is on `swords-only`, the
+mixed FFA rotation on `main`.
 
 ## Quick start (Windows PC with MCC + Project Reclaimer installed)
 
-Admin PowerShell:
+Everyone who joins needs MCC with the Halo 3 campaign installed and the same Project Reclaimer
+version. Admin PowerShell:
 
 ```powershell
-git clone -b swords-only https://github.com/q1kka/reclaimer-server.git C:\reclaimer-config
+git clone -b tsavo-legendary https://github.com/q1kka/reclaimer-server.git C:\reclaimer-config
 cd C:\reclaimer-config
 powershell -ExecutionPolicy Bypass -File .\setup-windows.ps1 -ExePath "C:\path\to\your\project-reclaimer.exe"
 cd C:\reclaimer
 .\project-reclaimer.exe dedicated
 ```
 
-Then start the game normally and join **Good times FFA - sword saturday** from the Server Browser.
-To test alone, set `min_players = 1` in `C:\reclaimer\dedicated.toml`.
+`setup-windows.ps1` copies the campaign missions (about 4 GB) the first time. Then start the game
+normally and join **Good times saturday - Tsavo Highway** from the Server Browser (Campaign
+filter). The mission starts as soon as one player is in; others join it while it runs.
 
 Auto-kick offensive names: in a **second** PowerShell window, `cd C:\reclaimer-config; .\name-guard.ps1`
 (see [Auto-kick offensive names](#auto-kick-offensive-names)).
 After a `git pull`, re-run `setup-windows.ps1` to copy the new config into `C:\reclaimer`.
 
+Already running the Swords server from `C:\reclaimer`? Switching branches and re-running setup
+turns that same server into this one. Both at once would need one `dedicated.toml` with two
+`[[server]]` blocks (they share the discovery port), so ask for that instead.
+
 | File | What it is |
 |---|---|
-| `game-modes/swords.json` | Custom Swords mode |
+| `dedicated.toml` | Server config: the campaign setup, 16 players max |
 | `name-guard.ps1` | Kicks players with offensive names, through RCON |
 | `name-filter.txt` | The words `name-guard.ps1` kicks for; edit freely |
-| `docker/` | Experimental Docker setup (Mac/Linux) |
-| `dedicated.toml` | Server config (8 players max, voting waits for 2) |
-| `playlists/swords-small.playlist.json` | **Active**: Swords on 6 small maps, with weights |
-| `playlists/lone-wolves.playlist.json` | Mixed-mode rotation from `main` (not used on this branch) |
 | `CONFIG-REFERENCE.md` | Every setting, its possible values and what changing it does |
 | `setup-windows.ps1` | Builds the server folder, copies the config, opens the firewall, runs `dedicated check` |
+| `docker/` | Experimental Docker setup (Mac/Linux) |
+| `playlists/`, `game-modes/` | Swords/FFA rotations from the other branches (not used here) |
 
-Docs: https://projectreclaimer.dev/host.html
+Docs: https://projectreclaimer.dev/host.html#campaign
 
-## Rotation
+## Campaign setup
 
-Every game is Swords (`game-modes/swords.json`): Energy Sword only, no map weapons, vehicles or
-grenades, so the map's normal power weapons and equipment don't spawn. Stock map layouts.
-Players = Bungie's recommended count.
+In `dedicated.toml`:
 
-Each vote offers 3 maps drawn by weight, plus "None of the above". **On ballot** = chance the map
-is one of the 3. **Played** = chance it's played if votes are random (with no votes, the first
-offered map starts, which gives the same odds). Total weight 48.
+```toml
+campaign = { mission = 3030, insertion = 0, difficulty = "legendary", custom_characters = true, modifiers = { skulls = 6144 } }
+```
 
-| Map | Weight | On ballot | Played | Players | Why this weight |
-|---|---|---|---|---|---|
-| Guardian | 10 | 59% | 20% | 2-6 | Tight, vertical, lifts: classic sword fights |
-| Heretic | 10 | 59% | 20% | 2-8 | Small symmetric arena, built around a sword spawn |
-| Construct | 8 | 51% | 17% | 2-8 | Small, lifts and corridors |
-| Citadel | 8 | 51% | 17% | 2-6 | Small, close quarters |
-| Epitaph | 6 | 40% | 13% | 2-6 | Small but some open lanes |
-| Cold Storage | 6 | 40% | 13% | 2-6 | Small, a bit flat |
+| Setting | Ours | Options |
+|---|---|---|
+| `mission` | 3030 Tsavo Highway | 3010 Sierra 117, 3020 Crow's Nest, 3040 The Storm, 3050 Floodgate, 3070 The Ark, 3100 The Covenant, 3110 Cortana, 3120 Halo |
+| `insertion` | 0 (mission start) | 1, 2, ... = later rally points, in the order the Campaign page lists them |
+| `difficulty` | "legendary" | "easy", "normal", "heroic" |
+| `custom_characters` | true | false = everyone plays as the Master Chief and the Arbiter |
+| `modifiers.skulls` | 6144 | Sum of the skulls you want (table below) |
 
-Left out: Narrows (long bridge, slow for swords), Isolation (vehicles, big), and every map Bungie
-rates for 4+ players (The Pit, Foundry, Ghost Town, Orbital) or bigger.
+Other modifiers: `sprint = true` (with `sprint_speed_percent` 110-200, `sprint_stamina_seconds`
+0-30), enemy `health_percent` / `damage_percent` 25-1000.
 
-### Custom modes
+| Skull | Value | | Skull | Value |
+|---|---|---|---|---|
+| Iron | 1 | | Assassin | 512 |
+| Black Eye | 2 | | Blind | 1024 |
+| Tough Luck | 4 | | **Cowbell** | **2048** |
+| Catch | 8 | | **Grunt Birthday Party** | **4096** |
+| Fog | 16 | | IWHBYD | 8192 |
+| Famine | 32 | | | |
+| Thunderstorm | 64 | | | |
+| Tilt | 128 | | | |
+| Mythic | 256 | | | |
 
-`game-modes/` is copied to the server's `content\Game Modes` by `setup-windows.ps1`.
+Avoid Iron with a full lobby: anyone dying sends everyone back to the checkpoint.
 
-- **Swords** (`swords.json`): Energy Sword only, no weapons/vehicles/grenades on the map, unlimited
-  sword battery, 25 kills, 10 min. Option values copied from the bundled Gun Game mode.
-
-If `dedicated content` already lists a built-in "Swords", use that name instead.
+After Tsavo the server goes on to The Storm and through the campaign, then starts again from Tsavo.
+Checkpoints live in the server's memory: restarting it starts Tsavo over.
 
 ## Auto-kick offensive names
 
@@ -108,7 +119,7 @@ Windows only; the Docker setup doesn't run it.
    ```powershell
    cd C:\reclaimer; .\project-reclaimer.exe dedicated
    ```
-4. Launch your normal client, open the Server Browser, join "Good times FFA - sword saturday".
+4. Launch your normal client, open the Server Browser, join "Good times saturday - Tsavo Highway".
    To test alone, set `min_players = 1` in `C:\reclaimer\dedicated.toml` (it reloads live).
 
 Friends outside your home network: forward **UDP 49176** and **TCP 49175** on your router

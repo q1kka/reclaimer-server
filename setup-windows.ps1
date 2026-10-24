@@ -11,10 +11,9 @@ param(
 $ErrorActionPreference = "Stop"
 $here = $PSScriptRoot
 
-# 1. Create the server folder and copy Halo 3 MP files from your own Steam MCC install.
-if (-not (Test-Path (Join-Path $ServerDir "dedicated.toml"))) {
-    & $ExePath dedicated init $ServerDir --from
-}
+# 1. Create the server folder and copy the Halo 3 campaign missions (~4 GB) from your own Steam
+#    MCC install. On an existing folder it only adds missing files and keeps your settings.
+& $ExePath dedicated init $ServerDir --from --maps campaign
 
 # 2. A separate copy of the exe for the server, so the client you play with stays untouched.
 Copy-Item $ExePath (Join-Path $ServerDir "project-reclaimer.exe") -Force

@@ -1,4 +1,5 @@
-# Project Reclaimer dedicated server: Halo 3 Swords only, FFA on small maps, 2-8 players.
+# Project Reclaimer dedicated server: Halo 3 campaign co-op, Tsavo Highway on Legendary
+# with Grunt Birthday Party + Cowbell, up to 16 players.
 # Key reference: https://projectreclaimer.dev/host.html
 # Validate with:  .\project-reclaimer.exe dedicated check
 
@@ -7,7 +8,7 @@ content = "content"    # maps, game types, mods
 data = "data"
 bans = "bans.json"
 
-host_name = "Good times FFA - sword saturday"
+host_name = "Good times saturday - Tsavo Highway"
 
 # Leave empty to auto-detect. Use your LAN IP (e.g. "192.168.1.50") to list
 # the server only on your home network while testing.
@@ -28,8 +29,8 @@ admins = []
 # this file. Don't put a password here: this repo is public.
 
 [defaults]
-max_players = 8
-min_players = 2            # voting waits until 2 players are in. Set 1 to test alone.
+max_players = 16           # co-op campaign holds at most 16; more stops the server
+min_players = 1            # the mission starts as soon as one player is in
 camera = "first_person"
 voice = true
 voice_proximity = true
@@ -42,10 +43,19 @@ block_vpn = true
 max_ping = 0               # 0 = no limit
 load_timeout = 30
 share_mods = false
-welcome = "Swords only. FFA on small Halo 3 maps, 2-8 players. Vote for the next map."
+welcome = "Tsavo Highway on Legendary. Skulls: Grunt Birthday Party + Cowbell. Up to 16 players."
 password = ""              # set one to keep it private
 
 [[server]]
-name = "Good times FFA - sword saturday"
+name = "Good times saturday - Tsavo Highway"
 port = 49176               # UDP
-playlist = "playlists/swords-small.playlist.json"
+# mission 3030 = Tsavo Highway (3010 Sierra 117, 3020 Crow's Nest, 3040 The Storm, 3050 Floodgate,
+#   3070 The Ark, 3100 The Covenant, 3110 Cortana, 3120 Halo). After it, the server goes on
+#   through the campaign, then starts over from Tsavo.
+# insertion 0 = the mission's start; 1+ = its later rally points.
+# custom_characters = everyone plays their own Spartan/Elite instead of Chief and the Arbiter.
+# skulls = sum of the ones on: Grunt Birthday Party 4096 + Cowbell 2048 = 6144.
+#   Iron 1, Black Eye 2, Tough Luck 4, Catch 8, Fog 16, Famine 32, Thunderstorm 64, Tilt 128,
+#   Mythic 256, Assassin 512, Blind 1024, Cowbell 2048, Grunt Birthday Party 4096, IWHBYD 8192.
+#   Don't add Iron with many players: anyone dying sends everyone back to the checkpoint.
+campaign = { mission = 3030, insertion = 0, difficulty = "legendary", custom_characters = true, modifiers = { skulls = 6144 } }
