@@ -1,6 +1,6 @@
 # Halo 3 Swords server (Project Reclaimer)
 
-**Branch `swords-only`.** One server, `Good times FFA - H3 originals`, 2-8 players, free-for-all
+**Branch `swords-only`.** One server, `Good times FFA - sword saturday`, 2-8 players, free-for-all
 **Swords only**, voted rotation of 6 small maps. The mixed-mode rotation is on the `main` branch.
 
 ## Quick start (Windows PC with MCC + Project Reclaimer installed)
@@ -15,7 +15,7 @@ cd C:\reclaimer
 .\project-reclaimer.exe dedicated
 ```
 
-Then start the game normally and join **Good times FFA - H3 originals** from the Server Browser.
+Then start the game normally and join **Good times FFA - sword saturday** from the Server Browser.
 To test alone, set `min_players = 1` in `C:\reclaimer\dedicated.toml`.
 After a `git pull`, re-run `setup-windows.ps1` to copy the new config into `C:\reclaimer`.
 
@@ -82,7 +82,7 @@ If `dedicated content` already lists a built-in "Swords", use that name instead.
    ```powershell
    cd C:\reclaimer; .\project-reclaimer.exe dedicated
    ```
-4. Launch your normal client, open the Server Browser, join "Good times FFA - H3 originals".
+4. Launch your normal client, open the Server Browser, join "Good times FFA - sword saturday".
    To test alone, set `min_players = 1` in `C:\reclaimer\dedicated.toml` (it reloads live).
 
 Friends outside your home network: forward **UDP 49176** and **TCP 49175** on your router

@@ -7,7 +7,7 @@ content = "content"    # maps, game types, mods
 data = "data"
 bans = "bans.json"
 
-host_name = "Good times FFA - H3 originals"
+host_name = "Good times FFA - sword saturday"
 
 # Leave empty to auto-detect. Use your LAN IP (e.g. "192.168.1.50") to list
 # the server only on your home network while testing.
@@ -47,6 +47,6 @@ welcome = "Swords only. FFA on small Halo 3 maps, 2-8 players. Vote for the next
 password = ""              # set one to keep it private
 
 [[server]]
-name = "Good times FFA - H3 originals"
+name = "Good times FFA - sword saturday"
 port = 49176               # UDP
 playlist = "playlists/swords-small.playlist.json"

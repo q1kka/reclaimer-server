@@ -16,7 +16,7 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 | `upnp` | true / false | false | false | true = router opens the ports itself. Keep false on AWS |
 | `auto_update` | true / false | false | false | true = installs new releases and restarts (kills running games) |
 | `auto_reload` | true / false | true | true | false = edits only apply after `dedicated reload` |
-| `host_name` | text | "Dedicated server" | "Good times FFA - H3 originals" | Shown under the server name in the browser and lobby |
+| `host_name` | text | "Dedicated server" | "Good times FFA - sword saturday" | Shown under the server name in the browser and lobby |
 | `admins` | list of player IDs | [] | [] | Those players can kick/ban on every server |
 | `stats_server` | empty / `"off"` / address | public service | public | `"off"` = games don't count toward players' ranks |
 
@@ -27,7 +27,7 @@ With `auto_reload = true`, saved edits apply while the server runs (from the nex
 
 | Setting | Values | Default | Ours | Changing it |
 |---|---|---|---|---|
-| `name` | text, ≤48 chars, unique | required | "Good times FFA - H3 originals" | Server browser name |
+| `name` | text, ≤48 chars, unique | required | "Good times FFA - sword saturday" | Server browser name |
 | `port` | 1024-65535 UDP, unique | required | 49176 | Must match firewall/router forward |
 | `playlist` | playlist file | — | swords-small | Voted rotation (pick **one** of playlist / map+game / variant / campaign / odst) |
 | `map` + `game` | names | Guardian + Slayer | — | Same map and mode every game, no voting |
